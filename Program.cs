@@ -11,9 +11,7 @@ class Program
 
     public static void Main(string[] args)
     {
-
-
-        Console.Write("Enter total students: ");
+        Console.Write("Enter total students: "); //Enter how many students to enroll.
         totalStudents = int.Parse(Console.ReadLine());
 
         studentNames = new string[totalStudents];
@@ -24,12 +22,12 @@ class Program
         while (true)
         {
             Console.WriteLine("\nWelcome to the Student Grades System!");
-            Console.WriteLine("[1] Enroll Students");
-            Console.WriteLine("[2] Enter Student Grades");
-            Console.WriteLine("[3] Show Student Grades");
-            Console.WriteLine("[4] Show Top Student");
-            Console.WriteLine("[5] Exit");
-            Console.Write("Enter Choice: ");
+            Console.WriteLine("[1] Enroll Students"); //Adds students by name
+            Console.WriteLine("[2] Enter Student Grades"); //Adds a student's grade
+            Console.WriteLine("[3] Show Student Grades"); //Shows all of the registered student's grades
+            Console.WriteLine("[4] Show Top Student"); //Shows which student is the highest
+            Console.WriteLine("[5] Exit"); //Exits the program
+            Console.Write("Enter Choice: "); //Asks the user to choose what it is that they want to do
             ConsoleKeyInfo keyInfo;
             keyInfo = Console.ReadKey(true);
 
@@ -64,19 +62,19 @@ class Program
         Console.WriteLine("\nEnroll Student");
         for (int i = 0; i < totalStudents; i++)
         {
-            Console.Write("Enter student name: ");
+            Console.Write("Enter student name: "); //Add student name
             studentNames[i] = Console.ReadLine();
             containsDigit = false;
 
             foreach (char c in studentNames[i])
             {
-                if (char.IsDigit(c))
+                if (char.IsDigit(c)) //Checks if the name has a number or any digits
                 {
                     containsDigit = true;
                     EnrollStudents();
                 }
             }
-            if (String.IsNullOrEmpty(studentNames[i]))
+            if (String.IsNullOrEmpty(studentNames[i])) //Checks if the string is blank or if there is no input
             {
                 Console.WriteLine("There is no input. Enter again?");
                 EnrollStudents();
@@ -88,12 +86,12 @@ class Program
             }
             else
             {
-                Console.WriteLine($"{studentNames[i]} is enrolled.");
+                Console.WriteLine($"{studentNames[i]} is enrolled."); //Confirmation message that the student has been enrolled.
             }
 
             if (i < totalStudents - 1)
             {
-                Console.WriteLine("Would you like to enroll another student? Y/N");
+                Console.WriteLine("Would you like to enroll another student? Y/N"); //Asks the user if they would like to enroll another student based on the number of students they input
                 ConsoleKeyInfo keyInfo;
                 keyInfo = Console.ReadKey(true);
 
@@ -113,7 +111,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("You have exceeded the number of students you are allowed to enroll. Return to Main Menu instead? Y/N");
+                Console.WriteLine("You have exceeded the number of students you are allowed to enroll. Return to Main Menu instead? Y/N"); //If the number of students allowed to be enrolled has been achieved, this message is prompted
                 ConsoleKeyInfo keyInfo;
                 keyInfo = Console.ReadKey(true);
 
@@ -140,17 +138,17 @@ class Program
         Console.WriteLine("\nEnter Student Grades");
         for (int i = 0; i < totalStudents; i++)
         {
-            Console.WriteLine($"Student: {studentNames[i]}");
-            Console.Write("Enter grade for Science: ");
+            Console.WriteLine($"Student: {studentNames[i]}"); //Shows which student's grades will be inputted
+            Console.Write("Enter grade for Science: "); //Adds Science grade
             gradesScience[i] = int.Parse(Console.ReadLine());
-            Console.Write("Enter grade for Math: ");
+            Console.Write("Enter grade for Math: "); //Adds Math grade
             gradesMath[i] = int.Parse(Console.ReadLine());
-            Console.Write("Enter grade for English: ");
+            Console.Write("Enter grade for English: "); //Adds English grade
             gradesEnglish[i] = int.Parse(Console.ReadLine());
 
             if (i < totalStudents - 1)
             {
-                Console.WriteLine("Would you like to add grades for another student? Y/N");
+                Console.WriteLine("Would you like to add grades for another student? Y/N"); //Asks user if they would like to add grades for another student
                 ConsoleKeyInfo keyInfo;
                 keyInfo = Console.ReadKey(true);
 
@@ -170,7 +168,7 @@ class Program
             }
             else
             {
-                Console.WriteLine("No students left. Return to Main Menu? [Y/N]");
+                Console.WriteLine("No students left. Return to Main Menu? [Y/N]"); //Prompts if there are no students left for grades to be added to
                 ConsoleKeyInfo keyInfo;
                 keyInfo = Console.ReadKey(true);
 
@@ -194,7 +192,7 @@ class Program
 
     static void ShowStudentGrades()
     {
-        Console.WriteLine("\nStudent Grades");
+        Console.WriteLine("\nStudent Grades"); //Shows the grades of all of the students enrolled
         Console.WriteLine("Name\t\tScience\t\tMath\t\tEnglish\t\tAve.");
         for (int i = 0; i < totalStudents; i++)
         {
@@ -208,7 +206,7 @@ class Program
         double maxAverage = 0;
         string topStudent = "";
 
-        for (int i = 0; i < totalStudents; i++)
+        for (int i = 0; i < totalStudents; i++) //Calculates which student has the highest average grade
         {
             double average = (gradesScience[i] + gradesMath[i] + gradesEnglish[i]) / 3.0;
             if (average > maxAverage)
@@ -218,7 +216,7 @@ class Program
             }
         }
 
-        Console.WriteLine($"\nTop Student: {topStudent}");
+        Console.WriteLine($"\nTop Student: {topStudent}"); //Displays which student is the top student based on their average grade
     }
 }
 
