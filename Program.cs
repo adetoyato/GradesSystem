@@ -197,6 +197,7 @@ class Program
         for (int i = 0; i < totalStudents; i++)
         {
             double average = (gradesScience[i] + gradesMath[i] + gradesEnglish[i]) / 3.0;
+            average = Math.Round(average, 2);
             Console.WriteLine($"{studentNames[i]}\t\t{gradesScience[i]}\t\t{gradesMath[i]}\t\t{gradesEnglish[i]}\t\t{average}");
         }
     }
@@ -216,7 +217,7 @@ class Program
             }
         }
 
-        Console.WriteLine($"\nTop Student: {topStudent}"); //Displays which student is the top student based on their average grade
+        Console.WriteLine($"\nTop Student: {topStudent} with an average score of {maxAverage}"); //Displays which student is the top student based on their average grade
     }
 }
 
