@@ -210,6 +210,7 @@ class Program
         for (int i = 0; i < totalStudents; i++) //Calculates which student has the highest average grade
         {
             double average = (gradesScience[i] + gradesMath[i] + gradesEnglish[i]) / 3.0;
+            average = Math.Round(average, 2);
             if (average > maxAverage)
             {
                 maxAverage = average;
